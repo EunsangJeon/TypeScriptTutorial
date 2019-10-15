@@ -1,4 +1,15 @@
 // Array destructing
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __rest = (this && this.__rest) || function (s, e) {
     var t = {};
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
@@ -9,6 +20,13 @@ var __rest = (this && this.__rest) || function (s, e) {
                 t[p[i]] = s[p[i]];
         }
     return t;
+};
+var __spreadArrays = (this && this.__spreadArrays) || function () {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
 };
 var _a;
 var input = [1, 2];
@@ -40,12 +58,37 @@ var a = tupleSample[0], b = tupleSample[1], c = tupleSample[2];
 // let [a, ...bc] = tupleSample; // bc: [string, boolean]
 // Object desctructing
 var objectSample = {
-    a: "foo",
-    b: 12,
-    c: "hoo"
+    alpha: "foo",
+    beta: 12,
+    gamma: "hoo"
 };
-// let {alpha, beta} = objectSample; // error because name is different.
-//let { a, b } = objectSample; // OK
-var a = objectSample.a, restObject = __rest(objectSample, ["a"]);
-console.log(a);
-console.log(restObject.b);
+// let {al, be} = objectSample; // error because name is different.
+//let { alpha, b } = objectSample; // OK
+var alpha = objectSample.alpha, restObject = __rest(objectSample, ["alpha"]);
+console.log(alpha);
+console.log(restObject);
+console.log(restObject.beta);
+// Property renaming(Object)
+var newAlpha = objectSample.alpha, newBeta = objectSample.beta;
+console.log(newAlpha);
+// Confusingly, the colon here does not indicate the type.
+// The type, if you specify it, still needs to be written after the entire destructuring:
+// let { a, b }: { a: string, b: number } = o;
+// Default values
+function keepWholeObject(wholeObject) {
+    var a = wholeObject.a, _a = wholeObject.b, b = _a === void 0 ? 1001 : _a;
+}
+// Spread
+var firstArray = [1, 2];
+var secondArray = [3, 4];
+var bothPlusArray = __spreadArrays([0], firstArray, secondArray, [5]);
+console.log(bothPlusArray);
+var defaultsRestaurantObject = {
+    food: "spicy",
+    price: "$$",
+    ambiance: "noisy"
+};
+var spreadExampleOne = __assign(__assign({}, defaultsRestaurantObject), { food: "rich" });
+console.log(spreadExampleOne);
+var spreadExampleTwo = __assign({ food: "rich" }, defaultsRestaurantObject);
+console.log(spreadExampleTwo);

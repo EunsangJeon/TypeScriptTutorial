@@ -45,7 +45,41 @@ let objectSample = {
 // let {al, be} = objectSample; // error because name is different.
 //let { alpha, b } = objectSample; // OK
 
-let { a, ...restObject} = objectSample;
-console.log(a);
-console.log(restObject.b);
+let { alpha, ...restObject} = objectSample;
+console.log(alpha);
+console.log(restObject);
+console.log(restObject.beta);
 
+// Property renaming(Object)
+
+let { alpha: newAlpha, beta: newBeta } = objectSample;
+console.log(newAlpha);
+// Confusingly, the colon here does not indicate the type.
+// The type, if you specify it, still needs to be written after the entire destructuring:
+// let { a, b }: { a: string, b: number } = o;
+
+// Default values
+
+function keepWholeObject(wholeObject: { a: string, b?: number }) {
+    let { a, b = 1001 } = wholeObject;
+}
+
+// Spread
+
+let firstArray = [1, 2];
+let secondArray = [3, 4];
+let bothPlusArray = [0, ...firstArray, ...secondArray, 5];
+
+console.log(bothPlusArray);
+
+let defaultsRestaurantObject = {
+	food: "spicy",
+	price: "$$",
+	ambiance: "noisy"
+}
+
+let spreadExampleOne: Object = { ...defaultsRestaurantObject, food: "rich"};
+console.log(spreadExampleOne);
+
+let spreadExampleTwo: Object = { food: "rich", ...defaultsRestaurantObject};
+console.log(spreadExampleTwo);
