@@ -79,6 +79,11 @@ function infiniteLoop() {
     while (true) {
     }
 }
+// Object
+function create(o) {
+    console.log("OK");
+}
+;
 create({ prop: 0 }); // OK
 create(null); // OK
 // create(42); // Error
@@ -90,3 +95,6 @@ var someValue = "this is a string";
 var strLength = someValue.length;
 someValue = "this is a string";
 strLength = someValue.length;
+// Just Curious
+var doubleNum = 1.234;
+console.log(doubleNum);

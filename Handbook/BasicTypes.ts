@@ -77,7 +77,9 @@ function infiniteLoop(): never {
 }
 
 // Object
-declare function create(o: object | null): void;
+function create(o: object | null): void{
+	console.log("OK");
+};
 create({ prop: 0 }); // OK
 create(null); // OK
 // create(42); // Error
@@ -91,3 +93,6 @@ let strLength: number = (<string>someValue).length;
 someValue = "this is a string";
 strLength = (someValue as string).length;
 
+// Just Curious
+let doubleNum: number = 1.234;
+console.log(doubleNum);
