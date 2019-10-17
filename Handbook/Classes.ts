@@ -209,6 +209,27 @@ abstract class Department {
 		console.log("Department name: " + this.name);
 	}
 
-
+	abstract printMeeting(): void; // must be implemented in derived classes
 }
+
+class AccountingDepartment extends Department {
+	constructor() {
+		super("Accounting and Auditing"); // you know we must use super
+	}
+
+	printMeeting(): void {
+		console.log("Every Monday at 10am");
+	}
+
+	generateReport(): void {
+		console.log("Generating Report...");
+	}
+}
+
+let department: Department;
+department = new AccountingDepartment();
+department.printName();
+department.printMeeting();
+// department.generateReports(); // error cause it's not in abstract type
+
 

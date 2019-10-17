@@ -208,3 +208,31 @@ var grid1 = new Grid(1.0); // 1x scale
 var grid2 = new Grid(5.0); // 5x scale
 console.log(grid1.calculateDistanceFromOrigin({ x: 10, y: 10 }));
 console.log(grid2.calculateDistanceFromOrigin({ x: 10, y: 10 }));
+//// Abstract Classes
+var Department = /** @class */ (function () {
+    function Department(name) {
+        this.name = name;
+    }
+    Department.prototype.printName = function () {
+        console.log("Department name: " + this.name);
+    };
+    return Department;
+}());
+var AccountingDepartment = /** @class */ (function (_super) {
+    __extends(AccountingDepartment, _super);
+    function AccountingDepartment() {
+        return _super.call(this, "Accounting and Auditing") || this;
+    }
+    AccountingDepartment.prototype.printMeeting = function () {
+        console.log("Every Monday at 10am");
+    };
+    AccountingDepartment.prototype.generateReport = function () {
+        console.log("Generating Report...");
+    };
+    return AccountingDepartment;
+}(Department));
+var department;
+department = new AccountingDepartment();
+department.printName();
+department.printMeeting();
+// department.generateReports(); // error cause it's not in abstract type
