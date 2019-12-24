@@ -41,3 +41,4 @@ var myGenericNumber = new GenericClass();
 myGenericNumber.zeroValue = 0;
 myGenericNumber.add = function (x, y) { return x + y; };
 console.log(myGenericNumber.add(3, 4));
+// Well actually, you can instance a class with string as generic 'cause it doesn't conflict to any.
